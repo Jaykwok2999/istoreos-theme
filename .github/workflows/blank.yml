@@ -42,9 +42,11 @@ jobs:
         mv ./tmp/* ./
         rm -rf ./tmp
         rm -rf luci-theme-argon/htdocs/luci-static/argon/favicon.ico
-        cp -r  
-        
-        
+        cp -r .github/workflows/favicon.ico luci-theme-argon/htdocs/luci-static/argon/
+        rm -rf luci-theme-argon/htdocs/luci-static/argon/icon
+        cp -r .github/workflows/icon luci-theme-argon/htdocs/luci-static/argon/
+        rm -rf luci-theme-argon/htdocs/luci-static/argon/img
+        cp -r .github/workflows/img luci-theme-argon/htdocs/luci-static/argon/
         
         
     - name: Apply
