@@ -18,10 +18,9 @@
 
 <% local ver = require "luci.version" %>
 </div>
-<footer class="mobile-hide">
-	<div>
+<footer>
+	<div class="mobile-hide">
 		<a class="luci-link" href="https://github.com/openwrt/luci">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)</a> /
-						<a href="https://github.com/jerrykuku/luci-theme-argon">ArgonTheme <%# vPKG_VERSION %></a> /
 						<%= ver.distversion %>
 		<ul class="breadcrumb pull-right" id="modemenu" style="display:none"></ul>
 	</div>
@@ -31,16 +30,19 @@
 <script>
 	// thanks for Jo-Philipp Wich <jow@openwrt.org>
 	var luciLocation = <%= luci.http.write_json(luci.dispatcher.context.path) %>;
-	var winHeight = $(window).height();
-	$(window).resize(function () {
-		var winWidth = $(window).width()
+	var winHeight = window.innerHeight;
+	window.addEventListener('resize', function () {
+		var winWidth = window.innerWidth;
 		if(winWidth < 600){
-			var newHeight = $(this).height();
+			var newHeight = window.innerHeight;
 			var keyboradHeight = newHeight - winHeight;
-			$(".ftc").css("bottom", keyboradHeight + 30);
+			var ftcElement = document.querySelector(".ftc");
+			if (ftcElement) {
+				ftcElement.style.bottom = (keyboradHeight + 30) + "px";
+			}
 		}
-	})
+	});
 </script>
-<script type="text/javascript">L.require('menu-argon', null, '<%# PKG_VERSION %>')</script>
+<script type="text/javascript">L.require('menu-argon')</script>
 </body>
 </html>
