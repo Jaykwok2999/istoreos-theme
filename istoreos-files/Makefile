@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=istoreos-files
 PKG_VERSION:=1.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 PKG_FLAGS:=hold essential nonshared
 
 PKG_LICENSE:=CC0-1.0
